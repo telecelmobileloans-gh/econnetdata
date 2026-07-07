@@ -3,280 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#001a4d">
-    <title>EcoCash | Success · Zimbabwe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#003366">
+    <title>EcoCash Data | Congratulations · Zimbabwe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --eco-red: #d32f2f;
-            --eco-blue-dark: #001a4d;
-            --eco-blue: #0033a0;
+            --blue-dark: #001a33;
+            --blue: #003366;
+            --blue-mid: #004d99;
+            --blue-light: #0077cc;
+            --blue-bright: #00aaff;
+            --red: #e30613;
+            --green: #00a651;
             --white: #ffffff;
-            --light-bg: #f5f7fa;
-            --text-dark: #1a1a1a;
-            --text-muted: #666666;
-            --border: #e0e0e0;
-            --success: #00b050;
+            --light: #f0f6ff;
+            --dark: #0d1b2a;
+            --muted: #5a6d80;
+            --border: #d0dce8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { -webkit-text-size-adjust: 100%; }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, var(--eco-blue) 0%, var(--eco-blue-dark) 100%);
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, var(--blue-mid) 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
         }
 
         header {
             background: white;
-            padding: 16px 5%;
-            border-bottom: 3px solid var(--eco-blue);
-            box-shadow: 0 2px 12px rgba(0, 51, 160, 0.12);
+            padding: 14px 5%;
+            border-bottom: 3px solid var(--blue);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 2px;
-        }
+        .logo { font-size: 22px; font-weight: 900; text-decoration: none; }
+        .logo .eco { color: var(--blue); }
+        .logo .cash { color: var(--red); }
 
-        .logo .eco { color: var(--eco-blue); }
-        .logo .cash { color: var(--eco-red); }
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 36px 16px; }
 
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .success-container {
+        .card {
             background: white;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 450px;
+            border-radius: 18px;
+            padding: 36px 28px;
+            max-width: 420px;
             width: 100%;
-            box-shadow: 0 10px 40px rgba(0, 51, 160, 0.25);
+            box-shadow: 0 16px 48px rgba(0,26,51,0.4);
             text-align: center;
-            border: 2px solid var(--eco-blue);
         }
 
-        .success-icon {
+        .icon {
             width: 80px;
             height: 80px;
-            background: rgba(0, 176, 80, 0.15);
-            border: 3px solid var(--success);
+            background: rgba(0,166,81,0.08);
+            border: 3px solid var(--green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 40px;
-            animation: scaleIn 0.6s ease-out;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            animation: pop 0.5s ease-out, glow 2s ease-in-out infinite;
         }
 
-        @keyframes scaleIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+        @keyframes pop { from { transform: scale(0.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(0,166,81,0.2); } 50% { box-shadow: 0 0 0 14px rgba(0,166,81,0); } }
 
-        .success-header h1 {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--success);
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
+        .card h1 { font-size: 22px; font-weight: 900; color: var(--green); margin-bottom: 6px; }
+        .card .desc { color: var(--muted); font-size: 13px; line-height: 1.6; margin-bottom: 22px; }
 
-        .success-header p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-
-        .bundle-info {
-            background: linear-gradient(135deg, var(--eco-blue), var(--eco-blue-dark));
+        .details {
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
             border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 28px;
+            padding: 18px;
+            margin-bottom: 22px;
             color: white;
+            text-align: left;
         }
 
-        .bundle-info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 13px;
-        }
-
-        .bundle-info-row:last-child {
-            margin-bottom: 0;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 8px;
-            font-weight: 800;
-            font-size: 16px;
-        }
+        .d-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 8px; }
+        .d-row:last-child { margin-bottom: 0; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.12); font-weight: 800; font-size: 14px; }
+        .d-row .lbl { opacity: 0.7; }
+        .d-row .val { font-weight: 700; }
 
         .btn-home {
             width: 100%;
-            background: linear-gradient(135deg, var(--eco-blue), var(--eco-blue-dark));
+            background: var(--blue);
             color: white;
             border: none;
-            padding: 14px 20px;
+            padding: 14px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
             cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(0,51,102,0.25);
             transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .btn-home:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(0, 51, 160, 0.4);
-        }
+        .btn-home:hover { background: var(--blue-light); transform: translateY(-1px); }
 
         .btn-receipt {
             width: 100%;
             background: transparent;
-            color: var(--eco-blue);
-            border: 2px solid var(--eco-blue);
-            padding: 14px 20px;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+            padding: 14px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
             cursor: pointer;
+            font-family: inherit;
             transition: all 0.2s;
         }
 
-        .btn-receipt:hover {
-            background: var(--light-bg);
-        }
+        .btn-receipt:hover { background: var(--light); }
 
-        .success-footer {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
+        .card-ft { margin-top: 18px; font-size: 11px; color: var(--muted); }
+        .card-ft a { color: var(--blue-light); text-decoration: none; font-weight: 700; }
 
-        .success-footer a {
-            color: var(--eco-blue);
-            text-decoration: none;
-            font-weight: 800;
-        }
-
-        .success-footer a:hover {
-            text-decoration: underline;
-        }
-
-        .security-badge {
+        .badges {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-top: 20px;
-            padding-top: 20px;
+            gap: 14px;
+            margin-top: 14px;
+            padding-top: 14px;
             border-top: 1px solid var(--border);
-            font-size: 11px;
-            color: var(--text-muted);
+            font-size: 10px;
+            color: var(--muted);
             font-weight: 600;
         }
 
-        .badge {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+        /* Confetti */
+        .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1000; overflow: hidden; }
+        .c-piece { position: absolute; width: 8px; height: 8px; border-radius: 2px; animation: fall 3s ease-out forwards; opacity: 0; }
+        @keyframes fall { 0% { transform: translateY(-60px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
 
-        @media (max-width: 600px) {
-            main { padding: 20px 16px; }
-            .success-container { padding: 28px 20px; }
-            .success-header h1 { font-size: 22px; }
-            .success-icon { width: 70px; height: 70px; font-size: 35px; }
+        @media (max-width: 500px) {
+            main { padding: 20px 12px; }
+            .card { padding: 28px 18px; }
+            .card h1 { font-size: 19px; }
+            .icon { width: 66px; height: 66px; font-size: 30px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <a class="logo" href="index.html"><span class="eco">Eco</span><span class="cash">Cash</span></a>
-    </header>
+    <header><a class="logo" href="index.html"><span class="eco">Eco</span><span class="cash">Cash</span></a></header>
 
     <main>
-        <div class="success-container">
-            <div class="success-icon">✓</div>
+        <div class="card">
+            <div class="icon">&#10003;</div>
+            <h1>Congratulations!</h1>
+            <p class="desc">Your data bundle has been successfully activated. You can start browsing immediately!</p>
 
-            <div class="success-header">
-                <h1>All Set!</h1>
-                <p>Your bundle has been activated. You can start using your data right away.</p>
+            <div class="details" id="details">
+                <div class="d-row"><span class="lbl">Bundle</span><span class="val" id="sData">&mdash;</span></div>
+                <div class="d-row"><span class="lbl">Phone</span><span class="val" id="sPhone">&mdash;</span></div>
+                <div class="d-row"><span class="lbl">Status</span><span class="val" style="color:#86efac;">Active</span></div>
+                <div class="d-row"><span class="lbl">Reference</span><span class="val" id="sRef">&mdash;</span></div>
+                <div class="d-row"><span class="lbl">Amount Paid</span><span class="val" id="sPrice">USD 0.00</span></div>
             </div>
 
-            <div id="bundleInfo" class="bundle-info" style="display: none;">
-                <div class="bundle-info-row">
-                    <span>Bundle:</span>
-                    <span id="bundleData">—</span>
-                </div>
-                <div class="bundle-info-row">
-                    <span>Amount Paid:</span>
-                    <span id="bundlePrice">USD 0.00</span>
-                </div>
-            </div>
+            <button class="btn-home" onclick="location.href='index.html'">Back to Home</button>
+            <button class="btn-receipt" onclick="dlReceipt()">Download Receipt</button>
 
-            <button class="btn-home" onclick="window.location.href='index.html'">← Back to Home</button>
-            <button class="btn-receipt" onclick="downloadReceipt()">📄 Receipt</button>
+            <div class="card-ft">Transaction successful. <a href="index.html">Buy another bundle</a></div>
 
-            <div class="success-footer">
-                Your transaction is complete. <a href="#">View details</a>
-            </div>
-
-            <div class="security-badge">
-                <div class="badge">🔒 Encrypted</div>
-                <div class="badge">✓ Secure</div>
+            <div class="badges">
+                <span>&#128274; Encrypted</span>
+                <span>&#9989; Verified</span>
+                <span>&#127760; Secure</span>
             </div>
         </div>
     </main>
 
+    <div class="confetti" id="confetti"></div>
+
     <script>
-        function loadBundleData() {
-            const params = new URLSearchParams(window.location.search);
-            const data = params.get('data');
-            const price = params.get('price');
+        let bd = {};
 
-            if (data && price) {
-                document.getElementById('bundleInfo').style.display = 'block';
-                document.getElementById('bundleData').textContent = data;
-                document.getElementById('bundlePrice').textContent = 'USD ' + price;
+        function init() {
+            const p = new URLSearchParams(location.search);
+            const d = p.get('data'), pr = p.get('price'), ph = p.get('phone');
+            const ref = 'ECO' + Date.now().toString().slice(-8);
+            bd = { data: d || 'N/A', price: pr || '0.00', phone: ph || 'N/A', ref };
+
+            document.getElementById('sData').textContent = bd.data;
+            document.getElementById('sPhone').textContent = ph ? '+263' + ph : 'N/A';
+            document.getElementById('sPrice').textContent = 'USD ' + bd.price;
+            document.getElementById('sRef').textContent = ref;
+        }
+
+        function dlReceipt() {
+            const date = new Date().toLocaleString();
+            const txt = `========================================
+       ECOCASH TRANSACTION RECEIPT
+========================================
+
+Reference: ${bd.ref}
+Date: ${date}
+Status: SUCCESS
+
+Bundle: ${bd.data}
+Phone: +263${bd.phone}
+Amount: USD ${bd.price}
+Payment: EcoCash
+
+========================================
+  Congratulations! Enjoy your data.
+  Thank you for using EcoCash.
+========================================`;
+
+            const blob = new Blob([txt], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `EcoCash_Receipt_${bd.ref}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function confetti() {
+            const el = document.getElementById('confetti');
+            const colors = ['#003366','#0077cc','#00aaff','#00a651','#004d99','#60a5fa','#e30613'];
+            for (let i = 0; i < 70; i++) {
+                const p = document.createElement('div');
+                p.className = 'c-piece';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.animationDelay = Math.random() * 2 + 's';
+                p.style.animationDuration = (2 + Math.random() * 2) + 's';
+                el.appendChild(p);
             }
+            setTimeout(() => el.remove(), 5000);
         }
 
-        function downloadReceipt() {
-            alert('Receipt has been sent to your email.');
-        }
-
-        window.addEventListener('load', loadBundleData);
+        window.addEventListener('load', () => { init(); confetti(); });
     </script>
 </body>
 </html>
